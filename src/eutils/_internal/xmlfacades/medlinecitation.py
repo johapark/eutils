@@ -21,8 +21,10 @@ class MedlineCitation(Base):
         def _format_author(au):
             if au.find("CollectiveName") is not None:
                 return au.find("CollectiveName").text
-            elif au.find("LastName") is not None and au.find("Initials") is not None:
-                return au.find("LastName").text + " " + au.find("Initials").text
+            #elif au.find("LastName") is not None and au.find("Initials") is not None:
+            #    return au.find("LastName").text + " " + au.find("Initials").text
+            elif au.find("LastName") is not None and au.find("ForeName") is not None:
+                return au.find("LastName").text + ", " + au.find("ForeName").text
             else:
                 return au.find("LastName").text
 
